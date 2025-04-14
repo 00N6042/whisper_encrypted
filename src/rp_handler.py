@@ -14,7 +14,7 @@ from runpod.serverless.utils.rp_validator import validate
 import runpod
 import predict
 from decrypt_data import decrypt
-
+from encrypt_data import encrypt
 
 MODEL = predict.Predictor()
 MODEL.setup()
@@ -97,7 +97,7 @@ def run_whisper_job(job):
     with rp_debugger.LineTimer('cleanup_step'):
         rp_cleanup.clean(['input_objects'])
 
-    return whisper_results
+    return encrypt(whisper_results,key,iv)
 
 
 runpod.serverless.start({"handler": run_whisper_job})

@@ -1,5 +1,4 @@
 from Crypto.Cipher import AES
-import os
 
 def unpad(data):
     padding_length = data[-1]
